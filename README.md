@@ -6,8 +6,8 @@
 ## Description
 
 In this repository you will find a simple RAP business object that simulates an inventory application. Since the calculation of inventories is a long running process this process is started asynchronously using the background processing framework (BGPF).
-
-![Inventory App](/images/rap100_travelapp01.png)
+/blob/main/images/bgpf_side_effects.gif
+![Inventory App](../../blob/main/images/bgpf_side_effects.gif)
 
 So when pressing the button 'Calculate inventory' on the Fiori UI of our RAP application an action 'reCalculateInventory' is being executed which simply updates the field 'BgpfStatus'. 
 
