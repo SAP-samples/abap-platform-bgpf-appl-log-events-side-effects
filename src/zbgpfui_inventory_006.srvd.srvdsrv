@@ -1,0 +1,4 @@
+@ObjectModel.leadingEntity.name: 'ZBGPFC_InventoryTP_006'
+define service ZBGPFUI_Inventory_006 {
+  expose ZBGPFC_INVENTORYTP_006 as Inventory;
+}

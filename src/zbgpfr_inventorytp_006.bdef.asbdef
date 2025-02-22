@@ -1,0 +1,67 @@
+managed with unmanaged save implementation in class ZBGPFBP_R_InventoryTP_006 unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZBGPFR_InventoryTP_006 alias Inventory
+//persistent table ZBGPF_INVEN_006
+draft table zbgpfinve00d_006
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+
+{
+  field ( readonly )
+  UUID,
+  InventoryID,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt;
+
+  field ( numbering : managed )
+  UUID;
+
+  // side effect events
+  event QuantityUpdated for side effects;
+
+  side effects
+  {
+    event QuantityUpdated affects field ( Quantity );
+  }
+
+  action reCalculateInventory;
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zbgpf_inven_006 control zbgpf_inven_x_006 corresponding
+    {
+      UUID               = UUID;
+      InventoryID        = INVENTORY_ID;
+      ProductID          = PRODUCT_ID;
+      Quantity           = QUANTITY;
+      QuantityUnit       = QUANTITY_UNIT;
+      Price              = PRICE;
+      CurrencyCode       = CURRENCY_CODE;
+      Remark             = REMARK;
+      NotAvailable       = NOT_AVAILABLE;
+      BgpfStatus         = BGPF_STATUS;
+      BgpgProcessName    = BGPG_PROCESS_NAME;
+      ApplLogHandle      = APPL_LOG_HANDLE;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  determination CalculateInventoryID on save { create; }
+}

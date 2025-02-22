@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Generated SAP Object Node Type",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "name": "ZBGPFInventory_006",
+  "sapObjectType": "ZBGPFInventory_006",
+  "rootNode": true
+}

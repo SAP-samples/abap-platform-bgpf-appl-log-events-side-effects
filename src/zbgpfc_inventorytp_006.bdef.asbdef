@@ -1,0 +1,33 @@
+projection;
+strict ( 2 );
+use draft;
+use side effects;
+
+define behavior for ZBGPFC_InventoryTP_006 alias Inventory
+use etag
+
+{
+
+  //set fields readonly for UI based consumption
+  field ( readonly )
+  Quantity,
+//  BgpfStatus,
+//  BgpgProcessName,
+
+  ApplLogHandle
+  ;
+
+  use action reCalculateInventory;
+
+  use event QuantityUpdated;
+
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+}
