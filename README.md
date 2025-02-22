@@ -5,9 +5,13 @@
 
 ## Description
 
-In this repository you will find a simple RAP business object that simulates an inventory application. 
-Since the calculation of inventories is a long running process this process is started asynchronously using the background processing framework (BGPF). 
-The asynchronous process is conveniently started using a class with a static method that takes the key of the updated entity of our RAP BO as a parameter
+In this repository you will find a simple RAP business object that simulates an inventory application. Since the calculation of inventories is a long running process this process is started asynchronously using the background processing framework (BGPF). 
+
+So when pressing the button 'Calculate inventory' on the Fiori UI of our RAP application an action 'reCalculateInventory' is being executed which simply updates the field 'BgpfStatus'. 
+
+<pre>action reCalculateInventory;</pre>
+
+This way we can check in the save_modifed( ) mode of our local saver class whether the *Calculate Inventory* button has been pressed. The asynchronous process is conveniently started withing the save_modifed( ) method using a class with a static method that takes the key of the updated entity of our RAP BO as a parameter
 
 <pre>
  DATA(bgpf_process_name) = zbgpfcl_calc_inventory_006=>run_via_bgpf( i_rap_bo_entity_key = <update_inventory>-%key ).
