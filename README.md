@@ -11,7 +11,7 @@ In the following animation check out the field **Quantitity**. When the button o
 
 ![Inventory App](../../blob/main/images/bgpf_side_effects.gif)
 
-So when pressing the button 'Calculate inventory' on the Fiori UI of our RAP application an action 'reCalculateInventory' is being executed which simply updates the field 'BgpfStatus'. 
+So when pressing the button *Calculate inventory* on the Fiori UI of our RAP application an action `reCalculateInventory` is being executed which simply updates the field `BgpfStatus. 
 
 <pre>action reCalculateInventory;</pre>
 
