@@ -15,7 +15,7 @@ So when pressing the button *Calculate inventory* on the Fiori UI of our RAP app
 
 <pre>action reCalculateInventory;</pre>
 
-This way we can check in the save_modifed( ) mode of our local saver class whether the *Calculate Inventory* button has been pressed. The asynchronous process is conveniently started withing the save_modifed( ) method using a class with a static method that takes the key of the updated entity of our RAP BO as a parameter
+This way we can check in the `save_modifed( )` method of our local saver class whether the *Calculate Inventory* button has been pressed. The asynchronous process is conveniently started within the `save_modifed( )` method using a class with a static method that takes the key of the updated entity of our RAP BO as a parameter
 
 <pre>
  DATA(bgpf_process_name) = zbgpfcl_calc_inventory_006=>run_via_bgpf( i_rap_bo_entity_key = <update_inventory>-%key ).
@@ -23,7 +23,7 @@ This way we can check in the save_modifed( ) mode of our local saver class wheth
 
 The background process is registered and being executed immediatley after the RAP framework has performed the COMMIT WORK statement.
 
-When the background process finishes it updates the entity of our RAP business objects using an EML call.
+When the background process finishes, it updates the entity of our RAP business objects using an EML call.  
 
 <pre>
       MODIFY ENTITIES OF ZBGPFR_InventoryTP_006  
@@ -34,7 +34,7 @@ When the background process finishes it updates the entity of our RAP business o
                FAILED DATA(failed_ready).  
  </pre>
 
-Again in the save_modified( ) method we check that the field 'quantity' has been updated. And if yes this raises the event 'QuantityUpdated'.  
+Again in the `save_modified( )` method we check that the field `Quantity` has been updated. And if yes this raises the event `QuantityUpdated`.  
 
 <pre>
        IF <update_inventory>-%control-Quantity = if_abap_behv=>mk-on.  
@@ -45,7 +45,7 @@ Again in the save_modified( ) method we check that the field 'quantity' has been
        ENDIF.  
 </pre>
 
-In the behavior definition we only have to specify a side effect for events. As a result the UI will be updated immediately once the long running process has finished. The end user is notified via a small popup.
+In the behavior definition we only have to specify a side effect for events which will cause a read request for the field `Quantity`. As a result the field `Quantity` will be updated in the UI immediately once the long running process that calculates the inventory has finished. The end user is notified via a small popup.  
 
 <pre>
   // side effect events
@@ -59,11 +59,7 @@ In the behavior definition we only have to specify a side effect for events. As 
 
 To get things working you have to make sure that the event is published via the behavior definition of your projection layer.   
 
-The projection behavior has to allow 
-
-and on entity level you have to specify the use of side effects 
-
-and the use of the event itself (and in our case the action as well).
+The projection behavior has to allow on business object level the use of side effects and on entity level the use of the event itself (and in our case the use of the action as well).
 
 <pre>
 use draft;  
@@ -71,10 +67,10 @@ use side effects;
 define behavior for ZBGPFC_InventoryTP_006 alias Inventory  
 use etag  
 
-{
- 
+{ 
   use action reCalculateInventory;  
   use event QuantityUpdated;  
+  ...   
 </pre>
 
 ## Requirements
