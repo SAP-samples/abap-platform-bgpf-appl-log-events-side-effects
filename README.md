@@ -20,7 +20,7 @@ So when pressing the button *Calculate inventory* on the Fiori UI of our RAP app
 This way we can check in the `save_modifed( )` method of our local saver class whether the *Calculate Inventory* button has been pressed. The asynchronous process is conveniently started within the `save_modifed( )` method using a class with a static method that takes the key of the updated entity of our RAP BO as a parameter
 
 <pre>
- DATA(bgpf_process_name) = zbgpfcl_calc_inventory_006=>run_via_bgpf( i_rap_bo_entity_key = <update_inventory>-%key ).
+ DATA(bgpf_process_name) = zbgpfcl_calc_inventory_006=>run_via_bgpf( i_rap_bo_entity_key = update_inventory-%key ).
 </pre>
 
 The background process is registered and being executed immediatley after the RAP framework has performed the COMMIT WORK statement.
