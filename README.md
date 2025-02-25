@@ -81,6 +81,8 @@ This scenario is supported in SAP BTP ABAP Environment and SAP S/4HANA ABAP envi
 
 ## Download and Installation
 
+Check out the following tutorial [Import Content from abapGit Repository into the BTP ABAP Environment](https://community.sap.com/t5/technology-blogs-by-members/import-content-from-abapgit-repository-into-the-btp-abap-environment/ba-p/13559990).   
+
 ## Known Issues
 
 none
