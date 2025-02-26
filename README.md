@@ -77,7 +77,8 @@ use etag
 
 ## Requirements
 
-This scenario is supported in SAP BTP ABAP Environment and SAP S/4HANA ABAP environment and it is planned to become supported for the upcoming on premise / private cloud release 2502.  
+- **BGPF** is available for private cloud and on premise SAP S/4HANA Systems as of release 2023
+- **Event Driven Side Effects** are currently only available in SAP BTP ABAP Environment and SAP S/4HANA public cloud ABAP Environment. We plan to make this available for on premise and private cloud systems as of release 2025 
 
 ## Download and Installation
 
